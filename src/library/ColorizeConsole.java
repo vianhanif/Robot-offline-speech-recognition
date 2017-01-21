@@ -16,7 +16,7 @@ import java.io.UnsupportedEncodingException;
  */
 
 public class ColorizeConsole extends PrintWriter{
-    
+
     public enum Console {
 
         BLACK("\u001B[30m"),
@@ -59,27 +59,27 @@ public class ColorizeConsole extends PrintWriter{
   public void red(String string) {
     println(Console.RED, string);
   }
-  
+
   public void black(String string) {
     println(Console.BLACK, string);
   }
-  
+
   public void blue(String string) {
     println(Console.BLUE, string);
   }
-  
+
   public void yellow(String string) {
     println(Console.YELLOW, string);
   }
-  
+
   public void purple(String string) {
     println(Console.PURPLE, string);
   }
-  
+
   public void cyan(String string) {
     println(Console.CYAN, string);
   }
-  
+
   public void white(String string) {
     println(Console.WHITE, string);
   }

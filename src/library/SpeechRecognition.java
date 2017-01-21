@@ -14,6 +14,7 @@ import Main.Main;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 import edu.cmu.sphinx.frontend.util.Microphone;
+import edu.cmu.sphinx.jsgf.JSGFGrammar;
 import edu.cmu.sphinx.recognizer.Recognizer;
 import edu.cmu.sphinx.result.Result;
 import edu.cmu.sphinx.util.props.ConfigurationManager;
@@ -22,6 +23,7 @@ import java.io.UnsupportedEncodingException;
 
 public class SpeechRecognition extends Speech{
     private final Recognizer recognizer;
+    private JSGFGrammar jsgfGrammar;
     private final ConfigurationManager cm;
     private ColorizeConsole out;
     private VoiceManager vm;
@@ -36,6 +38,7 @@ public class SpeechRecognition extends Speech{
             cm = new ConfigurationManager(Main.class.getResource("config.xml"));
         }
         recognizer = (Recognizer) cm.lookup("recognizer");
+        jsgfGrammar = (JSGFGrammar) cm.lookup("jsgfGrammar");
         recognizer.allocate();
     }
     
@@ -110,12 +113,13 @@ public class SpeechRecognition extends Speech{
         while (true) {
 
             Result result = recognizer.recognize();
-            String resultText = result.getBestResultNoFiller();
-
+            String resultText = result.getBestFinalResultNoFiller();
+            String pronounce = result.getBestPronunciationResult();
             if (!resultText.equals("")) {
                 output(Color.GREEN, "You >> " + resultText);
+                output(Color.CYAN,  ">>>>>> " + pronounce);
                 speak(resultText);
-                if(resultText.equals("quit system please")){
+                if(resultText.contains("quit")){
                     voice.deallocate();
                     System.exit(0);
                 }

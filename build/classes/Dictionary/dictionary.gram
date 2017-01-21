@@ -1,13 +1,202 @@
 #JSGF V1.0;
 /**
- * JSGF Grammar for Hello World example
- */
-grammar hello;
+  * JSGF Grammar for Hello World example
+  * @author Alvian Rahman Hanif
+  * @version 0.0.1
+*/
 
-<greet> = 
-        (   hello
-        |   hi
-        |   good (morning|afternoon|evening|night)
-) [Ryuji];
+grammar basics;
+/**
+  * Bot tokens
+*/
+<bot> = Ryuji;
 
-public <speech> = <greet>;
+/**
+  * Possible type of nouns
+*/
+
+/**
+  * Level (position) tokens
+*/
+<level> = (
+        firstly | secondly | lastly | last | first
+);
+
+/**
+  * Time tokens
+*/
+<day> = (morning|afternoon|evening|night);
+<time> = (daylight|noon|eve);
+
+/**
+  * Numbers tokens
+*/
+<numbers> = (
+          one | two | three | four | five | six |
+          seven | eight | nine | ten | eleven | twelve |
+          thirteen | fourteen | fifteen | sixteen | seventeen |
+          eighteen | nineteen
+);
+<numbers_th> = (
+            first | second | third | forth | fifth |
+            sixth | seventh | eighth | ninth | tenth
+);
+<numbers_eth> = (
+            eleventh | twelfth | thirteenth | fourteenth |
+            fifteenth | sixteenth | seventeenth | eighteenth |
+            nineteenth | twentieth | thirtieth | fortieth |
+            fiftieth | sixtieth | seventieth | eightieth |
+            ninetieth | hundredth
+);
+
+<numbers_ty> = (
+          twenty | thirty | forty | fifty | sixty | seventy |
+          eighty | ninety | hundred
+);
+
+<numberings_0> = <numbers>;
+<numberings_00> = <numbers_ty> [(
+                    <numbers>     |
+                    <numbers_th>  |
+                    <numbers_eth>
+                 )];
+<numberings_000> = <numbers> <numbers_ty> [(
+                                <numbers> |
+                                <numberings_2>
+                            )];
+<numberings> = (
+            <numberings_0> |
+            <numberings_00> |
+            <numberings_000>
+);
+
+
+/**
+  * Items
+*/
+<places> = (
+    cinema  | cinemas
+    house   | houses
+    office  | offices
+    school  | schools
+    campus  | campuses
+    college | colleges
+);
+
+<object_items> = (
+    film    | films
+    movie   | movies
+);
+
+<item_components> = (
+    <bot> | <object_items> | <places> | <numberings>
+);
+
+<items> = (
+          <NULL> | <item_components>
+) [<items>];
+
+/**
+  * Apposition
+*/
+<appositions> = (<level> | <day> | <time>);
+
+/**
+  * Vocabularies
+*/
+<questions> = (what|where|when|how|who);
+<nouns> = <items>;
+<adj_to_be> = (
+          have | had | has | as | very |
+          so | more
+);
+<adj_word> = (
+          beautiful | interesting | interested | fast | slow |
+          much | long | fun | valuable | exciting
+);
+<adj_time> = (
+          <appositions>* |
+          every |
+          since ((a year  | <numberings> years) ago | (a month | <numberings> months) ago)
+);
+<verbs> = (
+          work | works | working |
+          look | looks | looking |
+          excite | excites |
+          see | sees | saw |
+          interest | interests
+);
+
+/**
+  * common SPOK values
+*/
+<subject> = (I|you|they|we|<bot>);
+<object> = (me|us|them|it|they|that|these|those|their|my|<bot>);
+<to_be_verb> = at|in|on|into|onto;
+<to_be> = (am|is|are|was|were|a|an|the);
+<clauses> = (and|but|for|nor|or|so|yet);
+
+/**
+  * SPOK base structure
+*/
+
+/**
+* @example they have a beautiful house
+*/
+<spok_1> = <subject> <adj_to_be> [<to_be>] <adj_word> <nouns>;
+
+/**
+* @example we saw a very exciting film last night
+*/
+<spok_2> = <subject> <verbs> <to_be> <adj_to_be> <adj_word> <nouns> <adj_time>;
+
+/**
+* @example Their house is beautiful
+* @example that film looks interesting
+*/
+<spok_3> = <object> <nouns> (<to_be> | <verbs>) [<adj_to_be>] <adj_word>;
+
+/**
+* @example I am working in my office since two years ago
+*/
+<spok_4> = <subject> [<to_be>] <verbs> <to_be_verb> [<to_be> | <object>] <nouns> [<adj_time>];
+
+<sentences> = (
+        <spok_1> | <spok_2> | <spok_3> | <spok_4>
+);
+
+
+/** nasty algorithm ^^
+* <sentences> =  [(
+*             ((<subject> | <object>) [(<to_be> | <to_be_verb>)]) |
+*             <nouns>  |
+*             <questions>
+*           )]  [(
+*                 (<to_be> | <to_be_verb>)  |
+*                 <verbs> |
+*                 <adj_to_be>
+*                 )*]
+*           [(<to_be> | <to_be_verb>) ] [<adj_word>] [<nouns>] [<clauses> <spok>];
+*/
+
+
+/**
+  * Application commands
+*/
+<application> = ((quit the [system]) |
+        (go to the (
+            bank |
+            office |
+            restaurant
+        )) |
+        (open (
+            files |
+            window |
+            computer
+        ))
+) [please];
+
+public <speech> = (
+  <sentences> |
+  <application>
+);
