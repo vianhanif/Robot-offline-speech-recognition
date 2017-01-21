@@ -7,6 +7,7 @@ package Main;
 
 import library.SpeechRecognition;
 
+
 /**
  *
  * @author parallels
@@ -18,8 +19,7 @@ public class Main {
      */
     public static void main(String[] args) {
         SpeechRecognition speechRecognition = new SpeechRecognition(args);
-        speechRecognition.configure(SpeechRecognition.type.WITH_VOICE);
-        System.out.println("Say something...");
+        speechRecognition.configure(SpeechRecognition.Config.WITH_VOICE, SpeechRecognition.Config.COLORED_CONSOLE);
         speechRecognition.start();
     }
 }
