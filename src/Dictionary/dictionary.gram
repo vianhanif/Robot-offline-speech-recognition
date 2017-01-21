@@ -1,0 +1,13 @@
+#JSGF V1.0;
+/**
+ * JSGF Grammar for Hello World example
+ */
+grammar hello;
+
+<greet> = 
+        (   hello
+        |   hi
+        |   good (morning|afternoon|evening|night)
+) [Ryuji];
+
+public <speech> = <greet>;
