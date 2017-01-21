@@ -10,4 +10,7 @@ grammar hello;
         |   good (morning|afternoon|evening|night)
 ) [Ryuji];
 
-public <speech> = <greet>;
+
+<application> = quit [system] [please];
+
+public <speech> = ( <greet> | <application>);
