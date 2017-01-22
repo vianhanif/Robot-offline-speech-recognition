@@ -19,6 +19,7 @@ import edu.cmu.sphinx.recognizer.Recognizer;
 import edu.cmu.sphinx.result.Result;
 import edu.cmu.sphinx.util.props.ConfigurationManager;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 
 public class SpeechRecognition extends Speech{
@@ -28,8 +29,10 @@ public class SpeechRecognition extends Speech{
     private ColorizeConsole out;
     private VoiceManager vm;
     private Voice voice;
+    private Response response;
     private int open_voice = 0;
     private int colorize_console = 0;
+    private int show_response = 0;
     
     public SpeechRecognition(String[] args){
         if (args.length > 0) {
@@ -42,9 +45,25 @@ public class SpeechRecognition extends Speech{
         recognizer.allocate();
     }
     
+    public void configure(Speech.Config type, Speech.Config colored, Speech.Config response){
+        open_voice = type.id();
+        colorize_console = colored.id();
+        show_response = response.id();
+        if(open_voice == 1){
+            setupVoice();
+        }
+        if(colorize_console == 1){
+            setupColoredConsole();
+        }
+        if(show_response == 1){
+            setupResponse();
+        }
+    }
+    
     public void configure(Speech.Config type, Speech.Config colored){
         open_voice = type.id();
         colorize_console = colored.id();
+        show_response = Config.NO_RESPONSE.id();
         if(open_voice == 1){
             setupVoice();
         }
@@ -53,9 +72,35 @@ public class SpeechRecognition extends Speech{
         }
     }
     
+    public void configure(Speech.Config type){
+        open_voice = type.id();
+        colorize_console = Config.NON_COLORED_CONSOLE.id();
+        show_response = Config.NO_RESPONSE.id();
+        if(open_voice == 1){
+            setupVoice();
+        }
+    }
+    
     public void configure(){
         open_voice = Config.NO_VOICE.id();
         colorize_console = Config.NON_COLORED_CONSOLE.id();
+        show_response = Config.NO_RESPONSE.id();
+    }
+    
+    public void setResponses(ArrayList<ArrayList<ArrayList>> items){
+        if(items.size() > 0){
+            show_response = Config.SHOW_RESPONSE.id();
+            setupResponse();
+        }
+        if(show_response == 1){
+            for(int i=0;i<items.size();i++){
+                response.add(items.get(i));
+            }
+        }        
+    }
+    
+    private void setupResponse(){
+        response = new Response();
     }
     
     private void setupColoredConsole(){
@@ -97,12 +142,31 @@ public class SpeechRecognition extends Speech{
             System.out.println(text);
         }
     }
+    
+    private String[] setOutput(String text){
+        String person = "You >> ";
+        if(show_response == 1){
+            String result = text;
+            for(int i=0;i<response.size();i++){
+                for(int j=0;j<response.get(i).size();j++){
+                    if(text.toLowerCase().contains(response.getCommand(i, j))){
+                        result = response.getResponse(i, j);
+                        person = "Bot >> ";
+                        break;
+                    }
+                }
+            }
+            return new String[]{person, result};
+        }else{
+            return new String[]{person, text};
+        }
+    }
         
     
     public void start(){
         // start the microphone or exit if the programm if this is not possible
         Microphone microphone = (Microphone) cm.lookup("microphone");
-        output(Color.BLUE, "say something...");
+//        output(Color.BLUE, "say something...");
         if (!microphone.startRecording()) {
             output(Color.RED, Get.MIC_ERROR.respone());
             recognizer.deallocate();
@@ -111,22 +175,27 @@ public class SpeechRecognition extends Speech{
         
         // loop the recognition until the programm exits.
         while (true) {
-
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            response.ListCommand();
             Result result = recognizer.recognize();
             String resultText = result.getBestFinalResultNoFiller();
-            String pronounce = result.getBestPronunciationResult();
+            String output[] = setOutput(resultText);
+//            String pronounce = result.getBestPronunciationResult();
             if (!resultText.equals("")) {
-                output(Color.GREEN, "You >> " + resultText);
-                output(Color.CYAN,  ">>>>>> " + pronounce);
-                speak(resultText);
-                if(resultText.contains("quit")){
+                if(resultText.toLowerCase().contains("quit")){
+                    output(Color.GREEN, Get.QUIT.respone());
                     voice.deallocate();
                     System.exit(0);
+                }else{
+                    output(Color.GREEN, output[0] + output[1]);
+//                    output(Color.CYAN,  ">>>>>> " + pronounce);
+                    speak(output[1]);
                 }
             } else {
                 output(Color.YELLOW, "Bot >> " + Get.ERROR.respone());
                 speak(Get.ERROR.respone());
             }
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         }
     }
 }
@@ -138,7 +207,9 @@ class Speech{
         WITH_VOICE(1),
         NO_VOICE(0),
         COLORED_CONSOLE(1),
-        NON_COLORED_CONSOLE(0);
+        NON_COLORED_CONSOLE(0),
+        SHOW_RESPONSE(1),
+        NO_RESPONSE(0);
         
         private int id;
         Config(int id){
@@ -172,9 +243,10 @@ class Speech{
     }
     
     protected enum Get {
-        MIC_ERROR("cannot start your microphone"),
-        COLORING_CONSOLE_ERROR("error colorizing console"),
-        ERROR("I can't hear what you said");
+        MIC_ERROR("[Speech Recognition] : cannot start your microphone"),
+        COLORING_CONSOLE_ERROR("[Speech Recognition] : error colorizing console"),
+        ERROR("I can't hear what you said"),
+        QUIT("quitting system...");
         
         private String text;
         

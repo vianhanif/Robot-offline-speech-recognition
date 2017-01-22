@@ -62,7 +62,7 @@ grammar basics;
                  )];
 <numberings_000> = <numbers> <numbers_ty> [(
                                 <numbers> |
-                                <numberings_2>
+                                <numberings_00>
                             )];
 <numberings> = (
             <numberings_0> |
@@ -183,13 +183,13 @@ grammar basics;
 /**
   * Application commands
 */
-<application> = ((quit the [system]) |
+<application> = ((quit [the] [system]) |
         (go to the (
             bank |
             office |
             restaurant
         )) |
-        (open (
+        (open the(
             files |
             window |
             computer

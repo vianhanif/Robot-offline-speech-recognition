@@ -5,6 +5,8 @@
  */
 package Main;
 
+import ResponseCollection.BasicCommands;
+import java.util.ArrayList;
 import library.SpeechRecognition;
 
 
@@ -19,7 +21,13 @@ public class Main {
      */
     public static void main(String[] args) {
         SpeechRecognition speechRecognition = new SpeechRecognition(args);
-        speechRecognition.configure(SpeechRecognition.Config.WITH_VOICE, SpeechRecognition.Config.COLORED_CONSOLE);
+        speechRecognition.configure(
+                SpeechRecognition.Config.WITH_VOICE, 
+                SpeechRecognition.Config.COLORED_CONSOLE
+        );
+        speechRecognition.setResponses(new ArrayList(){{
+                add(BasicCommands.items());
+        }});
         speechRecognition.start();
     }
 }
