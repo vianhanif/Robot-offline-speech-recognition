@@ -1,6 +1,6 @@
 # USAGE
 
-```ruby
+```
 open terminal
 go to /dist
 run "java -jar Voice.jar"
