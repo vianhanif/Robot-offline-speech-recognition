@@ -6,6 +6,7 @@
 package Main;
 
 import ResponseCollection.BasicCommands;
+import ResponseCollection.DirectionCommands;
 import java.util.ArrayList;
 import library.SpeechRecognition;
 
@@ -27,6 +28,7 @@ public class Main {
         );
         speechRecognition.setResponses(new ArrayList(){{
                 add(BasicCommands.items());
+                add(DirectionCommands.items());
         }});
         speechRecognition.start();
     }

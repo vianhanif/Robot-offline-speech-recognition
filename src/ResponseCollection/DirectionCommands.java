@@ -11,18 +11,18 @@ import java.util.ArrayList;
  *
  * @author alvian
  */
-public enum BasicCommands {
-    BANK("go to the bank", "finding a route to the bank..."),
-    OFFICE("go to the office", "Going to the office by car..."),
-    RESTAURANT("go to the restaurant","looking for the restaurant in town..."),
-    OPENFILE("open the files", "opening some files in drive...."),
-    OPENWINDOW("open the window", "opening the window to breath..."),
-    OPENCOMPUTER("open the computer", "opening computer to start working...");
+public enum DirectionCommands {
+    LEFT("go left","tuning left..."),
+    RIGHT("go right", "turning right..."),
+    BACKWARD("go backward", "moving backwards..."),
+    FORWARD("go forward", "moving forwards..."),
+    STOP("stop", "stopping");
+    
     
     private final String said;
     private final String response;
         
-    BasicCommands(String said, String response){
+    DirectionCommands(String said, String response){
         this.said = said;
         this.response = response;
     }

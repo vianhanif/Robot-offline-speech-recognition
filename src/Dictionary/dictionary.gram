@@ -183,17 +183,19 @@ grammar basics;
 /**
   * Application commands
 */
+
+<basics> = (
+            (go to the (bank|office|restaurant)) |
+            (open the(files|window|computer))
+           );
+
+<directions> = (
+                (stop [moving])   | 
+                (go (left|right|forward|backward))
+               );
 <application> = ((quit [the] [system]) |
-        (go to the (
-            bank |
-            office |
-            restaurant
-        )) |
-        (open the(
-            files |
-            window |
-            computer
-        ))
+        <basics> | 
+        <directions>        
 ) [please];
 
 public <speech> = (
