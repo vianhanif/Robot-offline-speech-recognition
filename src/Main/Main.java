@@ -6,6 +6,7 @@
 package Main;
 
 import ResponseCollection.BasicCommands;
+import ResponseCollection.BrowsingCommands;
 import ResponseCollection.DirectionCommands;
 import java.util.ArrayList;
 import library.SpeechRecognition;
@@ -19,16 +20,18 @@ import library.SpeechRecognition;
 public class Main {
     /**
      * @param args the command line arguments
+     * @throws java.lang.InterruptedException
      */
-    public static void main(String[] args) {
+    public static void main(String[] args){
         SpeechRecognition speechRecognition = new SpeechRecognition(args);
         speechRecognition.configure(
-                SpeechRecognition.Config.WITH_VOICE, 
+                SpeechRecognition.Config.WITH_VOICE,
                 SpeechRecognition.Config.COLORED_CONSOLE
         );
         speechRecognition.setResponses(new ArrayList(){{
                 add(BasicCommands.items());
                 add(DirectionCommands.items());
+                add(BrowsingCommands.items());
         }});
         speechRecognition.start();
     }

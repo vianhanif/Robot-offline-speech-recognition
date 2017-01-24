@@ -20,6 +20,9 @@ import edu.cmu.sphinx.result.Result;
 import edu.cmu.sphinx.util.props.ConfigurationManager;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import library.Speech.Color;
+import library.Speech.Config;
+import library.Speech.Get;
 
 
 public class SpeechRecognition extends Speech{
@@ -33,6 +36,7 @@ public class SpeechRecognition extends Speech{
     private int open_voice = 0;
     private int colorize_console = 0;
     private int show_response = 0;
+    public static boolean running = false;
     
     public SpeechRecognition(String[] args){
         if (args.length > 0) {
@@ -161,6 +165,17 @@ public class SpeechRecognition extends Speech{
             return new String[]{person, text};
         }
     }
+    
+    private void checkAction(String text){
+        for(int i=0;i<response.size();i++){
+            for(int j=0;j<response.get(i).size();j++){
+                if(text.toLowerCase().contains(response.getCommand(i, j))){
+                    response.shouldRunAction(i, j);
+                    break;
+                }
+            }
+        }
+    }
         
     
     public void start(){
@@ -190,6 +205,7 @@ public class SpeechRecognition extends Speech{
                     output(Color.GREEN, output[0] + output[1]);
 //                    output(Color.CYAN,  ">>>>>> " + pronounce);
                     speak(output[1]);
+                    checkAction(resultText);
                 }
             } else {
                 output(Color.YELLOW, "Bot >> " + Get.ERROR.respone());

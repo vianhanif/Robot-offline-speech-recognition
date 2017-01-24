@@ -193,9 +193,11 @@ grammar basics;
                 (stop [moving])   | 
                 (go (left|right|forward|backward))
                );
+<browsing> = (open (google|facebook|youtube|twitter|allkpop));
 <application> = ((quit [the] [system]) |
         <basics> | 
-        <directions>        
+        <directions> |
+        <browsing>
 ) [please];
 
 public <speech> = (

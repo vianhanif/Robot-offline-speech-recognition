@@ -12,7 +12,7 @@ package ResponseCollection.Actions;
 public class Direction{
     
     public Direction(String direct){
-        System.out.println("[System] : going "+ direct +"....");
+        System.out.println("[System] : going "+ direct +"....");        
     }
     
 }

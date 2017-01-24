@@ -18,6 +18,7 @@ public class Response{
     
     private List<ArrayList<ArrayList>> collection;
     private ColorizeConsole out;
+    private int type;
     
     public Response(){
         this.collection = new ArrayList();
@@ -45,20 +46,29 @@ public class Response{
                 collection.get(i).get(j).get(0).toString().toLowerCase());
     }
     
-    public String getResponse(int i, int j){
+    public void shouldRunAction(int i, int j){
         if(collection.get(i).get(j).size() > 3){
             runResponseAction(Integer.parseInt(collection.get(i).get(j).get(2).toString()));
         }
+    }
+    
+    public String getResponse(int i, int j){
         return String.format("%s", 
                collection.get(i).get(j).get(1).toString().toLowerCase());
     }
     
     private void runResponseAction(int type){
-        ActionType.runAction(type);
+        this.type = type;
+        try {
+            ActionType.runAction(type);
+            Thread.sleep(500);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
     }
     
     public void ListCommand(){
-        out.cyan("### Available commands");
+        out.cyan("### Available Commands");
         for(int i = 0; i< collection.size();i++){
             boolean titled = false;
             for (int j =0;j<collection.get(i).size();j++){
