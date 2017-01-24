@@ -6,25 +6,28 @@
 package ResponseCollection;
 
 import java.util.ArrayList;
+import ResponseCollection.Actions.ActionType;
 
 /**
  *
  * @author alvian
  */
 public enum DirectionCommands {
-    LEFT("go left","tuning left..."),
-    RIGHT("go right", "turning right..."),
-    BACKWARD("go backward", "moving backwards..."),
-    FORWARD("go forward", "moving forwards..."),
-    STOP("stop", "stopping");
+    LEFT("go left","turning left...", ActionType.DIRECTION_LEFT.id()),
+    RIGHT("go right", "turning right...", ActionType.DIRECTION_RIGHT.id()),
+    BACKWARD("go backward", "moving backwards...", ActionType.DIRECTION_BACKWARD.id()),
+    FORWARD("go forward", "moving forwards...", ActionType.DIRECTION_FORWARD.id()),
+    STOP("stop", "stopping", ActionType.DIRECTION_STOP.id());
     
-    
+    private final String title = "Directions";
     private final String said;
     private final String response;
+    private final int action;
         
-    DirectionCommands(String said, String response){
+    DirectionCommands(String said, String response, int action){
         this.said = said;
         this.response = response;
+        this.action = action;
     }
     
     public static ArrayList items(){
@@ -33,6 +36,8 @@ public enum DirectionCommands {
             ArrayList item = new ArrayList();
             item.add(values()[i].said);
             item.add(values()[i].response);
+            item.add(values()[i].action);
+            item.add(values()[i].title);
             items.add(item);
         }
         return items;

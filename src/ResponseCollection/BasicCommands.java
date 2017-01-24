@@ -19,6 +19,7 @@ public enum BasicCommands {
     OPENWINDOW("open the window", "opening the window to breath..."),
     OPENCOMPUTER("open the computer", "opening computer to start working...");
     
+    private final String title = "Sample Command";
     private final String said;
     private final String response;
         
@@ -33,6 +34,7 @@ public enum BasicCommands {
             ArrayList item = new ArrayList();
             item.add(values()[i].said);
             item.add(values()[i].response);
+            item.add(values()[i].title);
             items.add(item);
         }
         return items;

@@ -5,6 +5,7 @@
  */
 package library;
 
+import ResponseCollection.Actions.ActionType;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * @author alvian
  */
-public class Response {
+public class Response{
     
     private List<ArrayList<ArrayList>> collection;
     private ColorizeConsole out;
@@ -45,22 +46,26 @@ public class Response {
     }
     
     public String getResponse(int i, int j){
-        if(collection.get(i).get(j).size() > 2){
-            runResponseAction(i, j);
+        if(collection.get(i).get(j).size() > 3){
+            runResponseAction(Integer.parseInt(collection.get(i).get(j).get(2).toString()));
         }
         return String.format("%s", 
-                collection.get(i).get(j).get(1).toString().toLowerCase());
+               collection.get(i).get(j).get(1).toString().toLowerCase());
     }
     
-    private void runResponseAction(int i, int j){
-        collection.get(i).get(j).get(2);
+    private void runResponseAction(int type){
+        ActionType.runAction(type);
     }
     
     public void ListCommand(){
         out.cyan("### Available commands");
         for(int i = 0; i< collection.size();i++){
-            out.cyan("--- Command Group " + (i+1) + "---");
+            boolean titled = false;
             for (int j =0;j<collection.get(i).size();j++){
+                if(!titled){
+                    out.yellow("--- " + (collection.get(i).get(j).size() > 3 ? collection.get(i).get(j).get(3) : collection.get(i).get(j).get(2)) + (collection.get(i).get(j).size() > 3 ? " [Actionable]" : "") + " ---");
+                    titled = true;
+                }
                 out.cyan((j+1) + ". " + getCommand(i, j));
             }
             System.out.println();            
