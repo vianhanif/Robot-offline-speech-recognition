@@ -26,7 +26,9 @@ public enum ActionType {
     
     COLLEGE_INFORMATION_WHAT(11),
     COLLEGE_INFORMATION_WHEN(12),
-    COLLEGE_INFORMATION_WHERE(13);
+    COLLEGE_INFORMATION_WHERE(13),
+    COLLEGE_INFORMATION_WHO(14),
+    COLLEGE_INFORMATION_HOW(15);
 
     private final int type;
 
@@ -52,5 +54,7 @@ public enum ActionType {
         if(type == ActionType.COLLEGE_INFORMATION_WHAT.id()){new CollegeInfo(speech, userWords);}
         if(type == ActionType.COLLEGE_INFORMATION_WHEN.id()){new CollegeInfo(speech, userWords);}
         if(type == ActionType.COLLEGE_INFORMATION_WHERE.id()){new CollegeInfo(speech, userWords);}
+        if(type == ActionType.COLLEGE_INFORMATION_WHO.id()){new CollegeInfo(speech, userWords);}
+        if(type == ActionType.COLLEGE_INFORMATION_HOW.id()){new CollegeInfo(speech, userWords);}
     }
 }

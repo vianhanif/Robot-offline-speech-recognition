@@ -7,7 +7,7 @@
 
 grammar basics;
 
-<sentences> = (what is your name | where do you live | when did you leave);
+<sentences> = (what is your name | where do you live | when did you leave | how old are you | who do you live with);
 
 
 /**

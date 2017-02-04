@@ -5,9 +5,13 @@
  */
 package library;
 
+import info.debatty.java.stringsimilarity.Damerau;
+import info.debatty.java.stringsimilarity.JaroWinkler;
+import info.debatty.java.stringsimilarity.Levenshtein;
 import java.io.File;
 import java.io.IOException;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Random;
 import java.util.Vector;
 
@@ -16,17 +20,16 @@ import java.util.Vector;
  * @author alvian
  */
 public class MarkovChain {
-    private Hashtable<String, Vector<String>> markovChain;
-    private Random rnd;
+    private Hashtable<String, Vector<String>> markovChain = new Hashtable<String, Vector<String>>();
+    private Random rnd = new Random();;
     private ReadFile file;
     private String[] lines;
+    private JaroWinkler compare = new JaroWinkler();
 
     public MarkovChain(String data_path) {
         try{
-            markovChain = new Hashtable<String, Vector<String>>();
             file = new ReadFile(System.getProperty("user.dir") + data_path);
             lines = file.OpenFile();
-            rnd = new Random();
             markovChain.put("_start", new Vector<String>());
             markovChain.put("_end", new Vector<String>());
         }catch(IOException e){
@@ -35,22 +38,76 @@ public class MarkovChain {
     }
     
     public MarkovChain(){
-        markovChain = new Hashtable<String, Vector<String>>();
-        rnd = new Random();
         markovChain.put("_start", new Vector<String>());
         markovChain.put("_end", new Vector<String>());
     }
     
-    public void addData(String data_path){
-        try{
-            file = new ReadFile(System.getProperty("user.dir") + data_path);
-            lines = file.OpenFile();
-            for(int i=0;i< lines.length;i++){
-                addWords(lines[i]);
-            }
-        }catch(IOException e){
-            System.out.println("[System] : failed to load file");
+    public void setDataSet(String dir_path){
+        List<ReadFile> dataSets = ReadFile.getFiles(dir_path);
+        for(ReadFile file : dataSets){
+            addData(file.getPath());
         }
+    }
+    
+    public void addData(String data_path){
+        if(!data_path.contains(".DS_Store")){
+            try{
+                file = new ReadFile(data_path);
+                lines = file.OpenFile();
+                for(int i=0;i< lines.length;i++){
+                    addWords(lines[i]);
+                }
+            }catch(IOException e){
+                System.out.println("[System] : failed to load file");
+            }
+        }
+    }
+    
+    public String getKnowledge(String word){
+        String[] phrase = new String[markovChain.size()];
+        double[] similarity = new double[markovChain.size()];
+        for(int i = 0;i< markovChain.size();i++){
+            String generated = generateSentence();
+            phrase[i] = generated;
+            System.out.println(phrase[i]);
+            similarity[i] = compare.similarity(word, generated);
+        }
+//        return phrase[getMax(similarity)] + " [" + similarity[getMax(similarity)] + "]";
+        return phrase[getMax(similarity)];
+    }
+    
+    private int getMax(double[] inputArray){ 
+        double maxValue = inputArray[0]; 
+        int index = 0;
+        for(int i=1;i < inputArray.length;i++){ 
+           if(inputArray[i] == 0.0){
+               continue;
+           }else{
+                if(inputArray[i] > maxValue){ 
+                     maxValue = inputArray[i]; 
+                     index = i;
+                }  
+           }
+        } 
+        System.out.println("max " + " = " + index + " : "+ maxValue);
+        return index; 
+    }
+    
+    private int getMin(double[] inputArray){ 
+        double minValue = inputArray[0]; 
+        int index = 0;
+        for(int i=1;i < inputArray.length;i++){ 
+           if(inputArray[i] == 0.0){
+               continue;
+           }else{
+                if(inputArray[i] < minValue){ 
+                     minValue = inputArray[i]; 
+                     index = i;
+                }  
+           }
+        } 
+        System.out.println("max " + " = " + index + " : "+ minValue);
+        return index; 
     }
     
     /*
@@ -100,8 +157,8 @@ public class MarkovChain {
     /*
      * Generate a markov phrase  
      */
-    public String generateSentence() {
-		
+    public String generateSentence() {  
+        
 	// Vector to hold the phrase
 	Vector<String> newPhrase = new Vector<String>();
 		
@@ -120,8 +177,12 @@ public class MarkovChain {
             int wordSelectionLen = wordSelection.size();
             nextWord = wordSelection.get(rnd.nextInt(wordSelectionLen));
             newPhrase.add(nextWord);
-	}	
-        return newPhrase.toString();	
+	}
+        String sentence = "";
+        for (String chain : newPhrase){
+            sentence += chain + " ";
+        }
+        return sentence;
     }
     
 }

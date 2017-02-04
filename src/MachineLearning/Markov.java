@@ -42,6 +42,7 @@ public class Markov {
 		
 		// Add the words to the hash table
 		addWords(sInput);
+                generateSentence();
 		}
 		
 	}
@@ -88,7 +89,7 @@ public class Markov {
 				}
 			}
 		}		
-		generateSentence();
+		
 	}
 	
 	
@@ -111,6 +112,7 @@ public class Markov {
 		
 		// Keep looping through the words until we've reached the end
 //                List<String> generatedPhrase = new ArrayList();
+                System.out.println(markovChain.values());
 		while (nextWord.charAt(nextWord.length()-1) != '.') {
 			Vector<String> wordSelection = markovChain.get(nextWord);
 			int wordSelectionLen = wordSelection.size();

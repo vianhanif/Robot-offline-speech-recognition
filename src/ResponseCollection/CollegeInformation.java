@@ -13,9 +13,11 @@ import java.util.ArrayList;
  * @author alvian
  */
 public enum CollegeInformation {
-    WHAT("what", "", ActionType.COLLEGE_INFORMATION_WHAT.id()),
-    WHEN("when", "", ActionType.COLLEGE_INFORMATION_WHEN.id()),
-    WHERE("where", "", ActionType.COLLEGE_INFORMATION_WHERE.id());
+    WHAT("what ", "", ActionType.COLLEGE_INFORMATION_WHAT.id()),
+    WHEN("when ", "", ActionType.COLLEGE_INFORMATION_WHEN.id()),
+    WHERE("where ", "", ActionType.COLLEGE_INFORMATION_WHERE.id()),
+    WHO("who ", "", ActionType.COLLEGE_INFORMATION_WHO.id()),
+    HOW("how ", "", ActionType.COLLEGE_INFORMATION_HOW.id());;
     
     private final String title = "Information about Gunadarma's Vision and Mission. Ask something starts with : ";
     private final String said;
