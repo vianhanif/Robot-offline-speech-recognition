@@ -38,7 +38,6 @@ public final class Browsing{
     public Browsing(Browse browse){
         this.browse = browse;
         System.out.println("[System] : opening "+ this.browse.link() +"....");
-//        run();
     }
     
     public void run() throws RuntimeException{

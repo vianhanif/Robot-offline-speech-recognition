@@ -7,6 +7,7 @@ package Main;
 
 import ResponseCollection.BasicCommands;
 import ResponseCollection.BrowsingCommands;
+import ResponseCollection.CollegeInformation;
 import ResponseCollection.DirectionCommands;
 import java.util.ArrayList;
 import library.SpeechRecognition;
@@ -32,6 +33,7 @@ public class Main {
                 add(BasicCommands.items());
                 add(DirectionCommands.items());
                 add(BrowsingCommands.items());
+                add(CollegeInformation.items());
         }});
         speechRecognition.start();
     }

@@ -19,6 +19,8 @@ public class Response{
     private List<ArrayList<ArrayList>> collection;
     private ColorizeConsole out;
     private int type;
+    private String userWords;
+    private SpeechRecognition speechRecognition;
     
     public Response(){
         this.collection = new ArrayList();
@@ -41,6 +43,18 @@ public class Response{
         return collection.size();
     }
     
+    public void setUserWords(String text){
+        userWords = text;
+    }
+    
+    public String getUserWords(){
+        return userWords;
+    }
+    
+    public void setSpeechInstance(SpeechRecognition instance){
+        speechRecognition = instance;
+    }
+    
     public String getCommand(int i, int j){
         return String.format("%s", 
                 collection.get(i).get(j).get(0).toString().toLowerCase());
@@ -60,7 +74,7 @@ public class Response{
     private void runResponseAction(int type){
         this.type = type;
         try {
-            ActionType.runAction(type);
+            ActionType.runAction(speechRecognition, type, userWords);
             Thread.sleep(500);                 //1000 milliseconds is one second.
         } catch(InterruptedException ex) {
             Thread.currentThread().interrupt();
@@ -73,7 +87,9 @@ public class Response{
             boolean titled = false;
             for (int j =0;j<collection.get(i).size();j++){
                 if(!titled){
-                    out.yellow("--- " + (collection.get(i).get(j).size() > 3 ? collection.get(i).get(j).get(3) : collection.get(i).get(j).get(2)) + (collection.get(i).get(j).size() > 3 ? " [Actionable]" : "") + " ---");
+                    String title = (collection.get(i).get(j).size() > 3 ? collection.get(i).get(j).get(3) : collection.get(i).get(j).get(2)).toString();
+                    String isActionable = (collection.get(i).get(j).size() > 3 ? " [Actionable]" : "").toString();
+                    out.yellow("--- " + isActionable + title + " ---");
                     titled = true;
                 }
                 out.cyan((j+1) + ". " + getCommand(i, j));

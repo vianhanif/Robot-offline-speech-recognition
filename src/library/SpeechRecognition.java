@@ -125,10 +125,14 @@ public class SpeechRecognition extends Speech{
         voice.setPitch(130);
     }
     
-    private void speak(String text){
+    public void speak(String text){
         if(open_voice == 1 && text != null){
             voice.speak(text);
         }
+    }
+    
+    private SpeechRecognition getSpeechInstance(){
+        return this;
     }
     
     private void output(Color color, String text){
@@ -170,6 +174,8 @@ public class SpeechRecognition extends Speech{
         for(int i=0;i<response.size();i++){
             for(int j=0;j<response.get(i).size();j++){
                 if(text.toLowerCase().contains(response.getCommand(i, j))){
+                    response.setSpeechInstance(getSpeechInstance());
+                    response.setUserWords(text.toLowerCase());
                     response.shouldRunAction(i, j);
                     break;
                 }
@@ -202,7 +208,9 @@ public class SpeechRecognition extends Speech{
                     voice.deallocate();
                     System.exit(0);
                 }else{
-                    output(Color.GREEN, output[0] + output[1]);
+                    if(!output[1].equals("")){
+                        output(Color.GREEN, output[0] + output[1]);
+                    }
 //                    output(Color.CYAN,  ">>>>>> " + pronounce);
                     speak(output[1]);
                     checkAction(resultText);

@@ -5,6 +5,8 @@
  */
 package ResponseCollection.Actions;
 
+import library.SpeechRecognition;
+
 /**
  *
  * @author alvian
@@ -20,7 +22,11 @@ public enum ActionType {
     BROWSE_YOUTUBE(7),
     BROWSE_FACEBOOK(8),
     BROWSE_TWITTER(9),
-    BROWSE_ALLKPOP(10);
+    BROWSE_ALLKPOP(10),
+    
+    COLLEGE_INFORMATION_WHAT(11),
+    COLLEGE_INFORMATION_WHEN(12),
+    COLLEGE_INFORMATION_WHERE(13);
 
     private final int type;
 
@@ -32,7 +38,7 @@ public enum ActionType {
         return type;
     }
 
-    public static void runAction(int type){
+    public static void runAction(SpeechRecognition speech, int type, String userWords){
         if(type == ActionType.DIRECTION_LEFT.id()){new Direction("left");}
         if(type == ActionType.DIRECTION_RIGHT.id()){new Direction("right");}
         if(type == ActionType.DIRECTION_BACKWARD.id()){new Direction("backward");}
@@ -43,5 +49,8 @@ public enum ActionType {
         if(type == ActionType.BROWSE_YOUTUBE.id()){new Browsing(Browsing.Browse.YOUTUBE);}
         if(type == ActionType.BROWSE_ALLKPOP.id()){new Browsing(Browsing.Browse.ALLKPOP);}
         if(type == ActionType.BROWSE_TWITTER.id()){new Browsing(Browsing.Browse.TWITTER);}
+        if(type == ActionType.COLLEGE_INFORMATION_WHAT.id()){new CollegeInfo(speech, userWords);}
+        if(type == ActionType.COLLEGE_INFORMATION_WHEN.id()){new CollegeInfo(speech, userWords);}
+        if(type == ActionType.COLLEGE_INFORMATION_WHERE.id()){new CollegeInfo(speech, userWords);}
     }
 }
