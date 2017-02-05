@@ -7,7 +7,41 @@
 
 grammar basics;
 
-<sentences> = (what is your name | where do you live | when did you leave | how old are you | who do you live with);
+<gunadarma> = gunadarma [(university | foundation)];
+
+<what_question> = (
+  what (
+    [(is|are)] [the] vision of <gunadarma> |
+    [is] [the] meaning of [the] [name] <gunadarma> |
+    defines <gunadarma> |
+    [(is|are)] [the] mission of <gunadarma>
+  )
+);
+
+<where_question> = (
+  where (
+    was <gunadarma> (first | firstly) located
+  )
+);
+
+<how_question> = (
+  how (
+    [did] <gunadarma> ([first] (founded | located) | name chosen | built)
+  )
+);
+
+<when_question> = (
+  when (
+    [did] <gunadarma> [got] (listed | equalized)
+  )
+);
+
+<sentences> = (
+  <what_question>  |
+  <where_question>  |
+  <when_question>    |
+  <how_question>
+);
 
 
 /**
@@ -20,12 +54,12 @@ grammar basics;
            );
 
 <directions> = (
-                (stop [moving])   | 
+                (stop [moving])   |
                 (go (left|right|forward|backward))
                );
 <browsing> = (open (google|facebook|youtube|twitter|allkpop));
-<application> = ((quit [the] [system]) |
-        <basics> | 
+<application> = ((stop [the] [system]) |
+        <basics> |
         <directions> |
         <browsing>
 ) [please];

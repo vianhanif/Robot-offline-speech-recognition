@@ -6,9 +6,6 @@
 package ResponseCollection.Actions;
 
 import info.debatty.java.stringsimilarity.Damerau;
-import info.debatty.java.stringsimilarity.JaroWinkler;
-import info.debatty.java.stringsimilarity.Levenshtein;
-import info.debatty.java.stringsimilarity.NormalizedLevenshtein;
 import library.MarkovChain;
 import library.SpeechRecognition;
 
@@ -29,22 +26,22 @@ public class CollegeInfo {
         speech.speak(response);
     }
     
-    public static void main(String args[]){
-        Damerau l = new Damerau();
-//        System.out.println(l.similarity("what is your name", "my name is Alvian."));
-//        System.out.println(l.similarity("what is your name", "i am twenty years old."));
-//        System.out.println(l.similarity("what is your name", "i am living in depok."));
-//        System.out.println(l.similarity("what is your name", "i live with my family.") + "\n");
-        System.out.println(l.distance("what is your name", "my name is Alvian."));
-        System.out.println(l.distance("what is your name", "i am twenty years old."));
-        System.out.println(l.distance("what is your name", "i am living in depok."));
-        System.out.println(l.distance("what is your name", "i live with my family."));
-        
-        System.out.println(l.distance("how old are you", "my name is Alvian."));
-        System.out.println(l.distance("how old are you", "my family."));
-        System.out.println(l.distance("how old are you", "i am twenty years old."));
-        System.out.println(l.distance("how old are you", "i am living in depok."));
-        System.out.println(l.distance("how old are you", "i live with my family."));
-    }
+//    public static void main(String args[]){
+//        Damerau l = new Damerau();
+////        System.out.println(l.similarity("what is your name", "my name is Alvian."));
+////        System.out.println(l.similarity("what is your name", "i am twenty years old."));
+////        System.out.println(l.similarity("what is your name", "i am living in depok."));
+////        System.out.println(l.similarity("what is your name", "i live with my family.") + "\n");
+//        System.out.println(l.distance("what is your name", "my name is Alvian."));
+//        System.out.println(l.distance("what is your name", "i am twenty years old."));
+//        System.out.println(l.distance("what is your name", "i am living in depok."));
+//        System.out.println(l.distance("what is your name", "i live with my family."));
+//        
+//        System.out.println(l.distance("how old are you", "my name is Alvian."));
+//        System.out.println(l.distance("how old are you", "my family."));
+//        System.out.println(l.distance("how old are you", "i am twenty years old."));
+//        System.out.println(l.distance("how old are you", "i am living in depok."));
+//        System.out.println(l.distance("how old are you", "i live with my family."));
+//    }
     
 }

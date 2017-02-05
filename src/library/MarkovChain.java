@@ -5,10 +5,7 @@
  */
 package library;
 
-import info.debatty.java.stringsimilarity.Damerau;
 import info.debatty.java.stringsimilarity.JaroWinkler;
-import info.debatty.java.stringsimilarity.Levenshtein;
-import java.io.File;
 import java.io.IOException;
 import java.util.Hashtable;
 import java.util.List;
@@ -69,8 +66,8 @@ public class MarkovChain {
         for(int i = 0;i< markovChain.size();i++){
             String generated = generateSentence();
             phrase[i] = generated;
-            System.out.println(phrase[i]);
             similarity[i] = compare.similarity(word, generated);
+            System.out.println(i + " : " + "[" + similarity[i] + "] "+ phrase[i]);
         }
 //        return phrase[getMax(similarity)] + " [" + similarity[getMax(similarity)] + "]";
         return phrase[getMax(similarity)];
@@ -89,7 +86,7 @@ public class MarkovChain {
                 }  
            }
         } 
-        System.out.println("max " + " = " + index + " : "+ maxValue);
+//        System.out.println("max " + " = " + index + " : "+ maxValue);
         return index; 
     }
     
@@ -106,7 +103,7 @@ public class MarkovChain {
                 }  
            }
         } 
-        System.out.println("max " + " = " + index + " : "+ minValue);
+//        System.out.println("max " + " = " + index + " : "+ minValue);
         return index; 
     }
     

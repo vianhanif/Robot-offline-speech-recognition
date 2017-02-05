@@ -157,7 +157,7 @@ public class SpeechRecognition extends Speech{
             String result = text;
             for(int i=0;i<response.size();i++){
                 for(int j=0;j<response.get(i).size();j++){
-                    if(text.toLowerCase().contains(response.getCommand(i, j))){
+                    if(text.toLowerCase().contains(response.getCommandType(i, j))){
                         result = response.getResponse(i, j);
                         person = "Bot >> ";
                         break;
@@ -173,7 +173,7 @@ public class SpeechRecognition extends Speech{
     private void checkAction(String text){
         for(int i=0;i<response.size();i++){
             for(int j=0;j<response.get(i).size();j++){
-                if(text.toLowerCase().contains(response.getCommand(i, j))){
+                if(text.toLowerCase().contains(response.getCommandType(i, j))){
                     response.setSpeechInstance(getSpeechInstance());
                     response.setUserWords(text.toLowerCase());
                     response.shouldRunAction(i, j);
@@ -203,7 +203,7 @@ public class SpeechRecognition extends Speech{
             String output[] = setOutput(resultText);
 //            String pronounce = result.getBestPronunciationResult();
             if (!resultText.equals("")) {
-                if(resultText.toLowerCase().contains("quit")){
+                if(resultText.toLowerCase().contains("quit ")){
                     output(Color.GREEN, Get.QUIT.respone());
                     voice.deallocate();
                     System.exit(0);
