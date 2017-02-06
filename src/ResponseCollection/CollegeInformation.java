@@ -20,9 +20,9 @@ public enum CollegeInformation {
     WHEN_1("when ", "When did Gunadarma University got 'Listed' ?", "", ActionType.COLLEGE_INFORMATION_WHEN.id()),
     WHEN_2("when ", "When did Gunadarma University got 'Equalized' ?", "", ActionType.COLLEGE_INFORMATION_WHEN.id()),
     WHERE_1("where ", "Where was Gunadarma first located ?", "", ActionType.COLLEGE_INFORMATION_WHERE.id()),
-    HOW_1("how ", "How did gunadarma firstly located ?", "", ActionType.COLLEGE_INFORMATION_WHERE.id()),
-    HOW_2("how ", "How did gunadarma name chosen ?", "", ActionType.COLLEGE_INFORMATION_WHERE.id()),
-    HOW_3("how ", "How did gunadarma built ?", "", ActionType.COLLEGE_INFORMATION_WHERE.id()),
+    HOW_1("how ", "How did gunadarma firstly located ?", "", ActionType.COLLEGE_INFORMATION_HOW.id()),
+    HOW_2("how ", "How did gunadarma name chosen ?", "", ActionType.COLLEGE_INFORMATION_HOW.id()),
+    HOW_3("how ", "How did gunadarma built ?", "", ActionType.COLLEGE_INFORMATION_HOW.id()),
     HOW_4("how ", "How did gunadarma first founded ?", "", ActionType.COLLEGE_INFORMATION_HOW.id());
 
     private final String title = "Information about Gunadarma's Profile. Ask something like below : ";

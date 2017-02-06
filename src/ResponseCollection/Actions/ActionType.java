@@ -51,10 +51,15 @@ public enum ActionType {
         if(type == ActionType.BROWSE_YOUTUBE.id()){new Browsing(Browsing.Browse.YOUTUBE);}
         if(type == ActionType.BROWSE_ALLKPOP.id()){new Browsing(Browsing.Browse.ALLKPOP);}
         if(type == ActionType.BROWSE_TWITTER.id()){new Browsing(Browsing.Browse.TWITTER);}
-        if(type == ActionType.COLLEGE_INFORMATION_WHAT.id()){new CollegeInfo(speech, userWords);}
-        if(type == ActionType.COLLEGE_INFORMATION_WHEN.id()){new CollegeInfo(speech, userWords);}
-        if(type == ActionType.COLLEGE_INFORMATION_WHERE.id()){new CollegeInfo(speech, userWords);}
-        if(type == ActionType.COLLEGE_INFORMATION_WHO.id()){new CollegeInfo(speech, userWords);}
-        if(type == ActionType.COLLEGE_INFORMATION_HOW.id()){new CollegeInfo(speech, userWords);}
+//        if(type == ActionType.COLLEGE_INFORMATION_WHAT.id()){new CollegeInfo(speech, userWords);}
+//        if(type == ActionType.COLLEGE_INFORMATION_WHEN.id()){new CollegeInfo(speech, userWords);}
+//        if(type == ActionType.COLLEGE_INFORMATION_WHERE.id()){new CollegeInfo(speech, userWords);}
+//        if(type == ActionType.COLLEGE_INFORMATION_WHO.id()){new CollegeInfo(speech, userWords);}
+//        if(type == ActionType.COLLEGE_INFORMATION_HOW.id()){new CollegeInfo(speech, userWords);}
+        if(type == ActionType.COLLEGE_INFORMATION_WHAT.id()){new CollegeInfo2(speech, "what", userWords);}
+        if(type == ActionType.COLLEGE_INFORMATION_WHEN.id()){new CollegeInfo2(speech, "when", userWords);}
+        if(type == ActionType.COLLEGE_INFORMATION_WHERE.id()){new CollegeInfo2(speech, "where", userWords);}
+        if(type == ActionType.COLLEGE_INFORMATION_WHO.id()){new CollegeInfo2(speech, "who", userWords);}
+        if(type == ActionType.COLLEGE_INFORMATION_HOW.id()){new CollegeInfo2(speech, "how", userWords);}
     }
 }
