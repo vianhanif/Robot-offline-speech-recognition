@@ -2,7 +2,7 @@
 
 ```
 open terminal
-go to /dist
+go to /build-src
 run "java -jar Voice.jar"
 ```
 
