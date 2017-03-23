@@ -183,7 +183,7 @@ public class SpeechRecognition extends Speech{
         }
     }
         
-    
+    private boolean open_app = false;
     public void start(){
         // start the microphone or exit if the programm if this is not possible
         Microphone microphone = (Microphone) cm.lookup("microphone");
@@ -208,12 +208,19 @@ public class SpeechRecognition extends Speech{
                     voice.deallocate();
                     System.exit(0);
                 }else{
-                    if(!output[1].equals("")){
-                        output(Color.GREEN, output[0] + output[1]);
+                    if(resultText.toLowerCase().startsWith("okay") ||
+                       resultText.toLowerCase().startsWith("hey")){
+                       open_app = true;
                     }
-//                    output(Color.CYAN,  ">>>>>> " + pronounce);
-                    speak(output[1]);
-                    checkAction(resultText);
+                    if (open_app){
+                        if(!output[1].equals("")){
+                            output(Color.GREEN, output[0] + output[1]);
+                        }
+    //                    output(Color.CYAN,  ">>>>>> " + pronounce);
+                        speak(output[1]);
+                        checkAction(resultText);   
+                        open_app = false;
+                    }                    
                 }
             } else {
                 output(Color.YELLOW, "Bot >> " + Get.ERROR.respone());

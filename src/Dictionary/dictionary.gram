@@ -47,7 +47,10 @@ grammar basics;
 /**
   * Application commands
 */
-
+<header> = (
+            (okay [ryuji]) |
+            (hey [ryuji])
+           );
 <basics> = (
             (go to the (bank|office|restaurant)) |
             (open the(files|window|computer))
@@ -59,6 +62,7 @@ grammar basics;
                );
 <browsing> = (open (google|facebook|youtube|twitter|allkpop));
 <application> = ((stop [the] [system]) |
+        <header> |
         <basics> |
         <directions> |
         <browsing>
