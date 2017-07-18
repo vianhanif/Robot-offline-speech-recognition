@@ -11,11 +11,11 @@ grammar basics;
 
 <what_question> = (
   what (
-    [(is|are)] [the] vision of <gunadarma> |
-    [is] [the] meaning of [the] [name] <gunadarma> |
-    [(is|are)] ([campus] |[the] [students]|<gunadarma>) [(activity|activities)] |
+    (is|are) [the] vision of <gunadarma> |
+    is [the] meaning of [the] [name] <gunadarma> |
+    are <gunadarma> (student | students) (activity | activities) |
     (define | defines) <gunadarma> |
-    [(is|are)] [the] mission of <gunadarma>
+    (is|are) [the] mission of <gunadarma>
   )
 );
 

@@ -17,7 +17,7 @@ public enum CollegeInformation {
     WHAT_2("what ", "What is the meaning of the name Gunadarma University ?", "", ActionType.COLLEGE_INFORMATION_WHAT.id()),
     WHAT_3("what ", "What defines Gunadarma ?", "", ActionType.COLLEGE_INFORMATION_WHAT.id()),
     WHAT_4("what ", "What is the mission of Gunadarma ?", "", ActionType.COLLEGE_INFORMATION_WHAT.id()),
-    WHAT_5("what ", "What are the students activities ?", "", ActionType.COLLEGE_INFORMATION_WHAT.id()),
+    WHAT_5("what ", "What are gunadarma students activities ?", "", ActionType.COLLEGE_INFORMATION_WHAT.id()),
     WHEN_1("when ", "When did Gunadarma University got 'Listed' ?", "", ActionType.COLLEGE_INFORMATION_WHEN.id()),
     WHEN_2("when ", "When did Gunadarma University got 'Equalized' ?", "", ActionType.COLLEGE_INFORMATION_WHEN.id()),
     WHERE_1("where ", "Where was Gunadarma first located ?", "", ActionType.COLLEGE_INFORMATION_WHERE.id()),
