@@ -18,6 +18,8 @@ import edu.cmu.sphinx.jsgf.JSGFGrammar;
 import edu.cmu.sphinx.recognizer.Recognizer;
 import edu.cmu.sphinx.result.Result;
 import edu.cmu.sphinx.util.props.ConfigurationManager;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import library.Speech.Color;
@@ -129,6 +131,22 @@ public class SpeechRecognition extends Speech{
         if(open_voice == 1 && text != null){
             voice.speak(text);
         }
+//        try {
+//            System.out.println("speaking");
+//            String command = "./simple_google_tts en '" + text + "'";
+//            System.out.println(command);
+//            Process proc = Runtime.getRuntime().exec(command);
+//            BufferedReader reader =  
+//              new BufferedReader(new InputStreamReader(proc.getInputStream()));
+//
+//            String line = "";
+//            while((line = reader.readLine()) != null) {
+//                System.out.print(line + "\n");
+//            }
+//            proc.waitFor();
+//        } catch (Exception ex) {
+//            
+//        }
     }
     
     private SpeechRecognition getSpeechInstance(){
@@ -202,29 +220,26 @@ public class SpeechRecognition extends Speech{
             String resultText = result.getBestFinalResultNoFiller();
             String output[] = setOutput(resultText);
 //            String pronounce = result.getBestPronunciationResult();
+//            System.out.println("answer:" + output[1]);
             if (!resultText.equals("")) {
                 if(resultText.toLowerCase().contains("quit ")){
                     output(Color.GREEN, Get.QUIT.respone());
                     voice.deallocate();
                     System.exit(0);
                 }else{
-                    if(resultText.toLowerCase().startsWith("okay") ||
-                       resultText.toLowerCase().startsWith("hey")){
-                       open_app = true;
-                    }
-                    if (open_app){
-                        if(!output[1].equals("")){
-                            output(Color.GREEN, output[0] + output[1]);
-                        }
+                    checkAction(resultText);
+//                    if(!output[1].equals("") && !output[1].startsWith("hey") && !output[1].startsWith("okay")){
+//                            output(Color.GREEN, output[0] + output[1]);
+//                            speak(output[1]);
+//                           checkAction(resultText);
+//                        }
     //                    output(Color.CYAN,  ">>>>>> " + pronounce);
-                        speak(output[1]);
-                        checkAction(resultText);   
-                        open_app = false;
-                    }                    
+                           
+                                      
                 }
             } else {
                 output(Color.YELLOW, "Bot >> " + Get.ERROR.respone());
-                speak(Get.ERROR.respone());
+//                speak(Get.ERROR.respone());
             }
             System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         }

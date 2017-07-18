@@ -27,7 +27,8 @@ public class Main {
         SpeechRecognition speechRecognition = new SpeechRecognition(args);
         speechRecognition.configure(
                 SpeechRecognition.Config.WITH_VOICE,
-                SpeechRecognition.Config.COLORED_CONSOLE
+                SpeechRecognition.Config.COLORED_CONSOLE,
+                SpeechRecognition.Config.SHOW_RESPONSE
         );
         speechRecognition.setResponses(new ArrayList(){{
                 add(BasicCommands.items());
