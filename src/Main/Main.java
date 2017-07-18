@@ -31,9 +31,9 @@ public class Main {
                 SpeechRecognition.Config.SHOW_RESPONSE
         );
         speechRecognition.setResponses(new ArrayList(){{
-                add(BasicCommands.items());
-                add(DirectionCommands.items());
-                add(BrowsingCommands.items());
+//                add(BasicCommands.items());
+//                add(DirectionCommands.items());
+//                add(BrowsingCommands.items());
                 add(CollegeInformation.items());
         }});
         speechRecognition.start();

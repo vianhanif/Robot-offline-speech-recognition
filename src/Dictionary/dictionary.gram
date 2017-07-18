@@ -13,8 +13,8 @@ grammar basics;
   what (
     [(is|are)] [the] vision of <gunadarma> |
     [is] [the] meaning of [the] [name] <gunadarma> |
-    [(is|are)] ([campus] |[the] [students]) [(activity|activities)] |
-    defines <gunadarma> |
+    [(is|are)] ([campus] |[the] [students]|<gunadarma>) [(activity|activities)] |
+    (define | defines) <gunadarma> |
     [(is|are)] [the] mission of <gunadarma>
   )
 );
