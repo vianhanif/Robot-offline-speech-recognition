@@ -5,43 +5,26 @@
  */
 package ResponseCollection.Actions;
 
-import info.debatty.java.stringsimilarity.Damerau;
-import library.MarkovChain;
+import java.util.Arrays;
 import library.SpeechRecognition;
+import library.TagMatch;
 
 /**
  *
  * @author alvian
  */
-public class CollegeInfo {
+public class CollegeInfo2 {
     
-    private MarkovChain markovChain;
-    
-    public CollegeInfo(SpeechRecognition speech, String words){
-        markovChain = new MarkovChain();
-        markovChain.setDataSet("/data/");
-        String response = markovChain.getKnowledge(words);
+    public CollegeInfo2(SpeechRecognition speech, String header, String words){
+        TagMatch matchers = new TagMatch();
+        matchers.setDataSet("/base-data/");
+        String[] tags = words.split(" ");
+        String response = matchers.getMatch(2, header, tags);
+        System.out.println("tokens : " + Arrays.toString(tags));
         System.out.println("[Machine Learning] question : "  + words);
         System.out.println("[Machine Learning] answer   : "  + response);
-        speech.speak(response);
+        if (response != null) {
+           speech.speak(response);
+        }        
     }
-    
-//    public static void main(String args[]){
-//        Damerau l = new Damerau();
-////        System.out.println(l.similarity("what is your name", "my name is Alvian."));
-////        System.out.println(l.similarity("what is your name", "i am twenty years old."));
-////        System.out.println(l.similarity("what is your name", "i am living in depok."));
-////        System.out.println(l.similarity("what is your name", "i live with my family.") + "\n");
-//        System.out.println(l.distance("what is your name", "my name is Alvian."));
-//        System.out.println(l.distance("what is your name", "i am twenty years old."));
-//        System.out.println(l.distance("what is your name", "i am living in depok."));
-//        System.out.println(l.distance("what is your name", "i live with my family."));
-//        
-//        System.out.println(l.distance("how old are you", "my name is Alvian."));
-//        System.out.println(l.distance("how old are you", "my family."));
-//        System.out.println(l.distance("how old are you", "i am twenty years old."));
-//        System.out.println(l.distance("how old are you", "i am living in depok."));
-//        System.out.println(l.distance("how old are you", "i live with my family."));
-//    }
-    
 }
