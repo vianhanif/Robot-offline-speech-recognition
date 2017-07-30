@@ -79,14 +79,14 @@ grammar basics;
 <find_people> = (
     find (
         alvian |
-        anna |
         jefri |
         lintong |
         missmargianti |
         misterdennis |
         misterery |
         mistermaulana |
-        mistermusa        
+        mistermusa |
+        anna
     )
 );
 
