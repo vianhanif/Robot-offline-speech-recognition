@@ -28,7 +28,17 @@ public enum ActionType {
     COLLEGE_INFORMATION_WHEN(12),
     COLLEGE_INFORMATION_WHERE(13),
     COLLEGE_INFORMATION_WHO(14),
-    COLLEGE_INFORMATION_HOW(15);
+    COLLEGE_INFORMATION_HOW(15),
+    
+    FIND_ALVIAN(16),
+    FIND_ANNA(17),
+    FIND_JEFRI(18),
+    FIND_LINTONG(19),
+    FIND_MISS_MARGIANTI(20),
+    FIND_MISTER_DENNIS(21),
+    FIND_MISTER_ERY(22),
+    FIND_MISTER_MAULANA(23),
+    FIND_MISTER_MUSA(24);
 
     private final int type;
 
@@ -51,10 +61,20 @@ public enum ActionType {
         if(type == ActionType.BROWSE_YOUTUBE.id()){new Browsing(Browsing.Browse.YOUTUBE);}
         if(type == ActionType.BROWSE_ALLKPOP.id()){new Browsing(Browsing.Browse.ALLKPOP);}
         if(type == ActionType.BROWSE_TWITTER.id()){new Browsing(Browsing.Browse.TWITTER);}
-        if(type == ActionType.COLLEGE_INFORMATION_WHAT.id()){new CollegeInfo(speech, "what", userWords);}
-        if(type == ActionType.COLLEGE_INFORMATION_WHEN.id()){new CollegeInfo(speech, "when", userWords);}
-        if(type == ActionType.COLLEGE_INFORMATION_WHERE.id()){new CollegeInfo(speech, "where", userWords);}
-        if(type == ActionType.COLLEGE_INFORMATION_WHO.id()){new CollegeInfo(speech, "who", userWords);}
-        if(type == ActionType.COLLEGE_INFORMATION_HOW.id()){new CollegeInfo(speech, "how", userWords);}
+        if(type == ActionType.COLLEGE_INFORMATION_WHAT.id()){new CollegeInformation(speech, "what", userWords);}
+        if(type == ActionType.COLLEGE_INFORMATION_WHEN.id()){new CollegeInformation(speech, "when", userWords);}
+        if(type == ActionType.COLLEGE_INFORMATION_WHERE.id()){new CollegeInformation(speech, "where", userWords);}
+        if(type == ActionType.COLLEGE_INFORMATION_WHO.id()){new CollegeInformation(speech, "who", userWords);}
+        if(type == ActionType.COLLEGE_INFORMATION_HOW.id()){new CollegeInformation(speech, "how", userWords);}
+        if(type == ActionType.FIND_ALVIAN.id()){new FindPeople(FindPeople.People.ALVIAN);}
+        if(type == ActionType.FIND_ANNA.id()){new FindPeople(FindPeople.People.ANNA);}
+        if(type == ActionType.FIND_JEFRI.id()){new FindPeople(FindPeople.People.JEFRI);}
+        if(type == ActionType.FIND_LINTONG.id()){new FindPeople(FindPeople.People.LINTONG);}
+        if(type == ActionType.FIND_MISS_MARGIANTI.id()){new FindPeople(FindPeople.People.MISS_MARGIANTI);}
+        if(type == ActionType.FIND_MISTER_DENNIS.id()){new FindPeople(FindPeople.People.MISTER_DENNIS);}
+        if(type == ActionType.FIND_MISTER_ERY.id()){new FindPeople(FindPeople.People.MISTER_ERY);}
+        if(type == ActionType.FIND_MISTER_MAULANA.id()){new FindPeople(FindPeople.People.MISTER_MAULANA);}
+        if(type == ActionType.FIND_MISTER_MUSA.id()){new FindPeople(FindPeople.People.MISTER_MUSA);}
+        
     }
 }

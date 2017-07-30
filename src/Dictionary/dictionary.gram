@@ -76,6 +76,20 @@ grammar basics;
    ( (thanks | thank you) [ryuji])
 );
 
+<find_people> = (
+    find (
+        alvian |
+        anna |
+        jefri |
+        lintong |
+        missmargianti |
+        misterdennis |
+        misterery |
+        mistermaulana |
+        mistermusa        
+    )
+);
+
 /**
 *<header> |
 *<basics> |
@@ -84,7 +98,8 @@ grammar basics;
 */
 
 <application> = (
-    <conversation>
+    <conversation> |
+    <find_people>
 );
 
 public <speech> = (
