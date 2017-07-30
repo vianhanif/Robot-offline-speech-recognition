@@ -5,9 +5,6 @@
  */
 package ResponseCollection;
 
-import ResponseCollection.Actions.ActionType;
-import static ResponseCollection.BasicCommands.values;
-import static ResponseCollection.DirectionCommands.values;
 import java.util.ArrayList;
 
 /**

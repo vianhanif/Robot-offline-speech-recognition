@@ -6,7 +6,6 @@
 package ResponseCollection;
 
 import ResponseCollection.Actions.ActionType;
-import static ResponseCollection.BrowsingCommands.values;
 import java.util.ArrayList;
 
 /**
