@@ -94,6 +94,7 @@ public class TagMatch {
                 matches.add(item.get(0));
             }
         }
+        System.out.println("macthes : " + matches.size());
         return matches.size() > 0 ? matches.get(new Random().nextInt(matches.size())) : null;
     }
     

@@ -219,27 +219,24 @@ public class SpeechRecognition extends Speech{
             Result result = recognizer.recognize();
             String resultText = result.getBestFinalResultNoFiller();
             String output[] = setOutput(resultText);
-//            String pronounce = result.getBestPronunciationResult();
-//            System.out.println("answer:" + output[1]);
+            System.out.println("[Words] : " + resultText);
             if (!resultText.equals("")) {
                 if(resultText.toLowerCase().contains("quit ")){
                     output(Color.GREEN, Get.QUIT.respone());
                     voice.deallocate();
                     System.exit(0);
                 }else{
-                    checkAction(resultText);
-//                    if(!output[1].equals("") && !output[1].startsWith("hey") && !output[1].startsWith("okay")){
-//                            output(Color.GREEN, output[0] + output[1]);
-//                            speak(output[1]);
-//                           checkAction(resultText);
-//                        }
-    //                    output(Color.CYAN,  ">>>>>> " + pronounce);
-                           
-                                      
+                    if (!output[1].equals("")) {
+                        output(Color.GREEN, output[0] + output[1]);
+                    }
+//                    output(Color.GREEN, output.toString());
+                    if (output[0] != "You >> ") {
+                        speak(output[1]);
+                    }
+                    checkAction(resultText);                    
                 }
             } else {
                 output(Color.YELLOW, "Bot >> " + Get.ERROR.respone());
-//                speak(Get.ERROR.respone());
             }
             System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         }

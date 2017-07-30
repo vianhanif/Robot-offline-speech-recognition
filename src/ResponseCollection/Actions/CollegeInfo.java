@@ -13,9 +13,9 @@ import library.TagMatch;
  *
  * @author alvian
  */
-public class CollegeInfo2 {
+public class CollegeInfo {
     
-    public CollegeInfo2(SpeechRecognition speech, String header, String words){
+    public CollegeInfo(SpeechRecognition speech, String header, String words){
         TagMatch matchers = new TagMatch();
         matchers.setDataSet("/base-data/");
         String[] tags = words.split(" ");
@@ -25,6 +25,6 @@ public class CollegeInfo2 {
         System.out.println("[Machine Learning] answer   : "  + response);
         if (response != null) {
            speech.speak(response);
-        }        
+        }
     }
 }

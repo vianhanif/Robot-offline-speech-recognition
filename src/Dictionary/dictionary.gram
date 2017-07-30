@@ -14,7 +14,7 @@ grammar basics;
     (is|are) [the] vision of <gunadarma> |
     is [the] meaning of [the] [name] <gunadarma> |
     are <gunadarma> (student | students) (activity | activities) |
-    (define | defines) <gunadarma> |
+    [defines] [define] <gunadarma> |
     (is|are) [the] mission of <gunadarma>
   )
 );
@@ -62,12 +62,30 @@ grammar basics;
                 (go (left|right|forward|backward))
                );
 <browsing> = (open (google|facebook|youtube|twitter|allkpop));
-<application> = ((stop [the] [system]) |
-        <header> |
-        <basics> |
-        <directions> |
-        <browsing>
-) [please];
+ 
+<conversation> = (
+   ((hi | hello) (
+        ryuji
+   )) |
+   (
+    [ryuji] nice to meet you [ryuji]
+   ) |
+   (
+    can you help [(me | alvian)] [please]
+    ) |
+   ( (thanks | thank you) [ryuji])
+);
+
+/**
+*<header> |
+*<basics> |
+*<directions> |
+*<browsing> |
+*/
+
+<application> = (
+    <conversation>
+);
 
 public <speech> = (
   <sentences> |
