@@ -7,6 +7,7 @@ package library;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
@@ -90,13 +91,27 @@ public class TagMatch {
     public String getMatch(int accuracy, String search, String[] tags) {
         List<List<String>> items = this.findByKey(search, tags);
         List<String> matches = new ArrayList();
+        int currentAccuracy = 0;
+        int index = 0;
+        List<String> savedItem = null;
         for (List<String> item : items) {
             if (Integer.parseInt(item.get(1)) >= accuracy) {
                 matches.add(item.get(0));
+                if (Integer.parseInt(item.get(1)) >= currentAccuracy) {
+                    currentAccuracy = Integer.parseInt(item.get(1));
+                    savedItem = item;
+                }
             }
+            index++;
         }
-        System.out.println("macthes : " + matches.size());
-        return matches.size() > 0 ? matches.get(new Random().nextInt(matches.size())) : null;
+        if (savedItem != null) {
+            System.out.println("[Tokens] : " + Arrays.toString(tags));
+            System.out.println("[Match Count] : " + matches.size());
+            System.out.println("[Final Match] : " + Arrays.toString(savedItem.toArray()));
+            return savedItem.get(0);
+        } else {
+            return null;
+        }
     }
 
 //    public static void main(String args[]){

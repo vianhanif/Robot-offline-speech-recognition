@@ -37,11 +37,19 @@ grammar basics;
   )
 );
 
+<who_question> = (
+   who (
+      are you |
+      [(is | are)] [the] rector of <gunadarma>
+   )
+);
+
 <sentences> = (
   <what_question>  |
   <where_question>  |
   <when_question>    |
-  <how_question>
+  <how_question> |
+  <who_question>
 );
 
 
@@ -63,10 +71,9 @@ grammar basics;
                );
 <browsing> = (open (google|facebook|youtube|twitter|allkpop));
  
-<conversation> = (
-   ((hi | hello) (
-        ryuji
-   )) |
+
+
+<conversation> = ( 
    (
     [ryuji] nice to meet you [ryuji]
    ) |
@@ -78,15 +85,14 @@ grammar basics;
 
 <find_people> = (
     find (
-        alvian |
-        jefri |
-        lintong |
         missmargianti |
         misterdennis |
         misterery |
         mistermaulana |
         mistermusa |
-        anna
+        alvian |
+        jefri |
+        lintong
     )
 );
 
@@ -97,12 +103,22 @@ grammar basics;
 *<browsing> |
 */
 
+<basic_question> = (
+   what (
+    (is|are) [the] vision of <gunadarma>
+   ) |
+   who (
+      are you |
+      [(is | are)] [the] rector of <gunadarma>
+   )
+);
+
 <application> = (
     <conversation> |
-    <find_people>
+    <find_people> |
+    <sentences>
 );
 
 public <speech> = (
-  <sentences> |
   <application>
 );

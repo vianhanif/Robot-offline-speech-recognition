@@ -13,18 +13,20 @@ import java.util.ArrayList;
  * @author alvian
  */
 public enum CollegeInformationCommands {
-    WHAT_1("what ", "What is the vision of Gunadarma University ?", "", ActionType.COLLEGE_INFORMATION_WHAT.id()),
-    WHAT_2("what ", "What is the meaning of the name Gunadarma University ?", "", ActionType.COLLEGE_INFORMATION_WHAT.id()),
-    WHAT_3("what ", "What defines Gunadarma ?", "", ActionType.COLLEGE_INFORMATION_WHAT.id()),
-    WHAT_4("what ", "What is the mission of Gunadarma ?", "", ActionType.COLLEGE_INFORMATION_WHAT.id()),
-    WHAT_5("what ", "What are gunadarma students activities ?", "", ActionType.COLLEGE_INFORMATION_WHAT.id()),
-    WHEN_1("when ", "When did Gunadarma University got 'Listed' ?", "", ActionType.COLLEGE_INFORMATION_WHEN.id()),
-    WHEN_2("when ", "When did Gunadarma University got 'Equalized' ?", "", ActionType.COLLEGE_INFORMATION_WHEN.id()),
-    WHERE_1("where ", "Where was Gunadarma first located ?", "", ActionType.COLLEGE_INFORMATION_WHERE.id()),
-    HOW_1("how ", "How did gunadarma firstly located ?", "", ActionType.COLLEGE_INFORMATION_HOW.id()),
-    HOW_2("how ", "How did gunadarma name chosen ?", "", ActionType.COLLEGE_INFORMATION_HOW.id()),
-    HOW_3("how ", "How did gunadarma built ?", "", ActionType.COLLEGE_INFORMATION_HOW.id()),
-    HOW_4("how ", "How did gunadarma first founded ?", "", ActionType.COLLEGE_INFORMATION_HOW.id());
+    WHAT_1("what ", "what is the vision of gunadarma university ?", "", ActionType.COLLEGE_INFORMATION_WHAT.id()),
+    WHO_1("who", "who are you", "", ActionType.COLLEGE_INFORMATION_WHO.id()),
+    WHO_2("who", "who is the rector gunadarma ?", "", ActionType.COLLEGE_INFORMATION_WHO.id()),
+    WHAT_2("what ", "what is the meaning of the name gunadarma university ?", "", ActionType.COLLEGE_INFORMATION_WHAT.id()),
+    WHAT_3("what ", "what defines gunadarma ?", "", ActionType.COLLEGE_INFORMATION_WHAT.id()),
+    WHAT_4("what ", "what is the mission of gunadarma ?", "", ActionType.COLLEGE_INFORMATION_WHAT.id()),
+    WHAT_5("what ", "what are gunadarma students activities ?", "", ActionType.COLLEGE_INFORMATION_WHAT.id()),
+    WHEN_1("when ", "when did gunadarma university got ' listed ' ?", "", ActionType.COLLEGE_INFORMATION_WHEN.id()),
+    WHEN_2("when ", "when did gunadarma university got ' equalized ' ?", "", ActionType.COLLEGE_INFORMATION_WHEN.id()),
+    WHERE_1("where ", "where was gunadarma first located ?", "", ActionType.COLLEGE_INFORMATION_WHERE.id()),
+    HOW_1("how ", "how did gunadarma firstly located ?", "", ActionType.COLLEGE_INFORMATION_HOW.id()),
+    HOW_2("how ", "how did gunadarma name chosen ?", "", ActionType.COLLEGE_INFORMATION_HOW.id()),
+    HOW_3("how ", "how did gunadarma built ?", "", ActionType.COLLEGE_INFORMATION_HOW.id()),
+    HOW_4("how ", "how did gunadarma first founded ?", "", ActionType.COLLEGE_INFORMATION_HOW.id());
 
     private final String title = "Information about Gunadarma's Profile. Ask something like below : ";
     private final String said;

@@ -20,7 +20,6 @@ public class CollegeInformation {
         matchers.setDataSet("/base-data/");
         String[] tags = words.split(" ");
         String response = matchers.getMatch(1, header, tags);
-        System.out.println("tokens : " + Arrays.toString(tags));
         System.out.println("[Machine Learning] question : "  + words);
         System.out.println("[Machine Learning] answer   : "  + response);
         if (response != null) {

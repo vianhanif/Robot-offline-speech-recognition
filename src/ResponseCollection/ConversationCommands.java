@@ -12,9 +12,9 @@ import java.util.ArrayList;
  * @author alvian
  */
 public enum ConversationCommands {
-    RYUJI("ryuji", "hello too"),
-    HI("hi", "hello too"),
-    HELLO("hello", "hello too"),
+//    RYUJI("ryuji", "hello too"),
+//    HI("hi", "hello too"),
+//    HELLO("hello", "hello too"),
     NICE_TO_MEET_YOU("nice to meet you", "nice to meet you too"),
     CAN_YOU_HELP("can you help", "what can i do for you"),
     THANKS("thank", "you are welcome");
