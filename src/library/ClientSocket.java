@@ -30,7 +30,7 @@ public class ClientSocket {
 
     public ClientSocket(){
         try {
-            echoSocket  = new Socket(host, Integer.parseInt(portNumber));
+            echoSocket = new Socket(host, Integer.parseInt(portNumber));
             outPrint    = new PrintWriter(echoSocket.getOutputStream(), true);
             inPrint     = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
             client = new Client(outPrint, inPrint);      

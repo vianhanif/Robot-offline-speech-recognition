@@ -66,15 +66,15 @@ public enum ActionType {
         if(type == ActionType.COLLEGE_INFORMATION_WHERE.id()){new CollegeInformation(speech, "where", userWords);}
         if(type == ActionType.COLLEGE_INFORMATION_WHO.id()){new CollegeInformation(speech, "who", userWords);}
         if(type == ActionType.COLLEGE_INFORMATION_HOW.id()){new CollegeInformation(speech, "how", userWords);}
-        if(type == ActionType.FIND_ALVIAN.id()){new FindPeople(FindPeople.People.ALVIAN);}
-        if(type == ActionType.FIND_ANNA.id()){new FindPeople(FindPeople.People.ANNA);}
-        if(type == ActionType.FIND_JEFRI.id()){new FindPeople(FindPeople.People.JEFRI);}
-        if(type == ActionType.FIND_LINTONG.id()){new FindPeople(FindPeople.People.LINTONG);}
-        if(type == ActionType.FIND_MISS_MARGIANTI.id()){new FindPeople(FindPeople.People.MISS_MARGIANTI);}
-        if(type == ActionType.FIND_MISTER_DENNIS.id()){new FindPeople(FindPeople.People.MISTER_DENNIS);}
-        if(type == ActionType.FIND_MISTER_ERY.id()){new FindPeople(FindPeople.People.MISTER_ERY);}
-        if(type == ActionType.FIND_MISTER_MAULANA.id()){new FindPeople(FindPeople.People.MISTER_MAULANA);}
-        if(type == ActionType.FIND_MISTER_MUSA.id()){new FindPeople(FindPeople.People.MISTER_MUSA);}
+        if(type == ActionType.FIND_ALVIAN.id()){FindPeople.find(FindPeople.People.ALVIAN);}
+        if(type == ActionType.FIND_ANNA.id()){FindPeople.find(FindPeople.People.ANNA);}
+        if(type == ActionType.FIND_JEFRI.id()){FindPeople.find(FindPeople.People.JEFRI);}
+        if(type == ActionType.FIND_LINTONG.id()){FindPeople.find(FindPeople.People.LINTONG);}
+        if(type == ActionType.FIND_MISS_MARGIANTI.id()){FindPeople.find(FindPeople.People.MISS_MARGIANTI);}
+        if(type == ActionType.FIND_MISTER_DENNIS.id()){FindPeople.find(FindPeople.People.MISTER_DENNIS);}
+        if(type == ActionType.FIND_MISTER_ERY.id()){FindPeople.find(FindPeople.People.MISTER_ERY);}
+        if(type == ActionType.FIND_MISTER_MAULANA.id()){FindPeople.find(FindPeople.People.MISTER_MAULANA);}
+        if(type == ActionType.FIND_MISTER_MUSA.id()){FindPeople.find(FindPeople.People.MISTER_MUSA);}
         
     }
 }
