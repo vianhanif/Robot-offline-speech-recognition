@@ -13,7 +13,7 @@ import library.ClientSocket;
  */
 public class FindPeople {
     
-    private static ClientSocket clientSocket = new ClientSocket();
+    private static final ClientSocket clientSocket = new ClientSocket();
     
     public enum People{
         ALVIAN("alvian"),

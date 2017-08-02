@@ -43,6 +43,7 @@ public class ClientSocket {
         return client;
     }
     
+    
     public void runMessage(String message) {
         try {
             System.out.println("[Application] : trying to send message \"" + message + "\"");
