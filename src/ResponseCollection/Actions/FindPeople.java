@@ -5,6 +5,8 @@
  */
 package ResponseCollection.Actions;
 
+import library.ClientSocket;
+
 /**
  *
  * @author alvian
@@ -34,6 +36,8 @@ public class FindPeople {
     }
     
     public FindPeople (People people) {
+        ClientSocket clientSocket = new ClientSocket();
+        clientSocket.runMessage("find " + people.getName());
         System.out.println("[application] : looking for " + people.getName());
     }
     
