@@ -33,7 +33,7 @@ public enum ActionType {
     FIND_ALVIAN(16),
     FIND_ANNA(17),
     FIND_JEFRI(18),
-    FIND_LINTONG(19),
+//    FIND_LINTONG(19),
     FIND_MISS_MARGIANTI(20),
     FIND_MISTER_DENNIS(21),
     FIND_MISTER_ERY(22),
@@ -69,7 +69,7 @@ public enum ActionType {
         if(type == ActionType.FIND_ALVIAN.id()){FindPeople.find(FindPeople.People.ALVIAN);}
         if(type == ActionType.FIND_ANNA.id()){FindPeople.find(FindPeople.People.ANNA);}
         if(type == ActionType.FIND_JEFRI.id()){FindPeople.find(FindPeople.People.JEFRI);}
-        if(type == ActionType.FIND_LINTONG.id()){FindPeople.find(FindPeople.People.LINTONG);}
+//        if(type == ActionType.FIND_LINTONG.id()){FindPeople.find(FindPeople.People.LINTONG);}
         if(type == ActionType.FIND_MISS_MARGIANTI.id()){FindPeople.find(FindPeople.People.MISS_MARGIANTI);}
         if(type == ActionType.FIND_MISTER_DENNIS.id()){FindPeople.find(FindPeople.People.MISTER_DENNIS);}
         if(type == ActionType.FIND_MISTER_ERY.id()){FindPeople.find(FindPeople.People.MISTER_ERY);}

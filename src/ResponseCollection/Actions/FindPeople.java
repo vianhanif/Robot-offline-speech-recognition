@@ -19,7 +19,7 @@ public class FindPeople {
         ALVIAN("alvian"),
         ANNA("anna"),
         JEFRI("jefri"),
-        LINTONG("lintong"),
+//        LINTONG("lintong"),
         MISS_MARGIANTI("missmargianti"),
         MISTER_DENNIS("misterdennis"),
         MISTER_ERY("misterery"),

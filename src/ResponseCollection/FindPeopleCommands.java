@@ -16,7 +16,7 @@ public enum FindPeopleCommands {
     ALVIAN("find alvian", "looking for information about alvian", ActionType.FIND_ALVIAN.id()),
     ANNA("find anna", "looking for information about anna", ActionType.FIND_ANNA.id()),
     JEFRI("find jefri", "looking for information about jefri", ActionType.FIND_JEFRI.id()),
-    LINTONG("find lintong", "looking for information about lintong", ActionType.FIND_LINTONG.id()),
+//    LINTONG("find lintong", "looking for information about lintong", ActionType.FIND_LINTONG.id()),
     MARGIANTI("find missmargianti", "looking for information about missmargianti", ActionType.FIND_MISS_MARGIANTI.id()),
     DENNIS("find misterdennis", "looking for information about misterdennis", ActionType.FIND_MISTER_DENNIS.id()),
     ERY("find misterery", "looking for information about misterery", ActionType.FIND_MISTER_ERY.id()),

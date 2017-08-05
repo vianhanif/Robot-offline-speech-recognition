@@ -91,8 +91,7 @@ grammar basics;
         mistermaulana |
         mistermusa |
         alvian |
-        jefri |
-        lintong
+        jefri 
     )
 );
 
